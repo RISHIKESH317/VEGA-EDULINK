@@ -1,15 +1,20 @@
-# VEGA-EDULINK: VEGA ARIES V2,V3 Student Learning & Development Kit
+# VEGA-EDULINK: VEGA ARIES V2 & V3 Student Learning & Development Kit
 
-A dedicated web-based learning, development, and programming platform for the **VEGA ARIES V2 RISC-V microcontroller**, combining learning resources, documentation, coding, compilation, firmware generation, hardware programming, serial monitoring, and hands-on experimentation.
+A dedicated web-based learning, development, and programming platform for **VEGA RISC-V microcontrollers**, supporting VEGA ARIES V2, V3 series, and other supported VEGA boards. The platform combines learning resources, documentation, coding, compilation, firmware generation, hardware programming, serial monitoring, and hands-on experimentation.
 
 ## Overview
 
-VEGA-EDULINK is designed to provide students with a complete environment for learning and developing applications using the VEGA ARIES V2.
+VEGA-EDULINK is designed to provide students with a complete environment for learning and developing applications using **VEGA RISC-V microcontrollers**.
+
+A key feature of the platform is that the **VEGA RISC-V toolchain is integrated directly into the website**, allowing source code to be compiled and firmware to be generated within the VEGA-EDULINK environment.
+
+By using the integrated VEGA toolchain and the corresponding board configuration, the platform can support compilation and firmware generation for **VEGA ARIES V2, V3 series, and other supported VEGA boards**.
 
 The platform integrates:
 
-- VEGA ARIES V2 learning resources and documentation
+- VEGA RISC-V learning resources and documentation
 - Web-based IDE for C/C++ development
+- Integrated VEGA RISC-V toolchain
 - Backend compilation and firmware generation
 - Integrated Serial Monitor for real-time serial output and debugging
 - Direct cable-based programming
@@ -20,6 +25,7 @@ The platform integrates:
 - GPIO and peripheral interfacing
 - Communication protocol experiments
 - Custom hardware integration for VEGA ARIES V2
+- Support for VEGA ARIES V2, V3 series, and other supported VEGA boards
 
 ### Project Workflow
 
@@ -29,7 +35,9 @@ The platform integrates:
 
 # Project Overview
 
-The complete project integrates the **VEGA-EDULINK Web IDE, Serial Monitor, ESP32-S3 wireless programming gateway, VEGA ARIES V2, trainer kits, and custom hardware.**
+The complete project integrates the **VEGA-EDULINK Web IDE, integrated VEGA toolchain, Serial Monitor, ESP32-S3 wireless programming gateway, VEGA ARIES V2 hardware, trainer kits, and custom carrier PCB**.
+
+The website provides the common development environment and integrated VEGA toolchain, while the current trainer kit, custom carrier PCB, and OTA programming gateway are demonstrated using the VEGA ARIES V2.
 
 **Project Resources:**
 
@@ -45,17 +53,27 @@ The complete project integrates the **VEGA-EDULINK Web IDE, Serial Monitor, ESP3
 
 ## 1. Web-Based Development Platform
 
-The Web IDE provides a dedicated environment for VEGA ARIES V2 development.
+The Web IDE provides a dedicated environment for developing applications for VEGA RISC-V microcontrollers.
+
+The **VEGA RISC-V toolchain is integrated into the website itself**, eliminating the need for users to separately configure the compiler toolchain for the supported VEGA targets.
 
 The development flow is:
 
-**C/C++ Source Code → Build → Compile → Link → Generate `firmware.bin` → Program VEGA ARIES V2**
+**C/C++ Source Code → Build → Compile → Link → Generate `firmware.bin` → Program VEGA Board**
 
-The backend build environment processes the source code using the required VEGA RISC-V toolchain and generates the firmware binary required for programming the target device.
+The backend build environment uses the integrated VEGA RISC-V toolchain to process the source code and generate the firmware binary required for the selected VEGA board.
 
-The Web IDE also includes an **integrated Serial Monitor** for viewing real-time serial output from the VEGA ARIES V2 during program execution and debugging.
+The Web IDE also includes an **integrated Serial Monitor** for viewing real-time serial output during program execution and debugging.
 
-## 2. VEGA ARIES V2 Student Learning Kit
+## 2. VEGA ARIES V2 & V3 Support
+
+VEGA-EDULINK is designed to support the **VEGA ARIES V2, V3 series, and other supported VEGA RISC-V boards**.
+
+The integrated VEGA toolchain allows the Web IDE to compile source code according to the selected VEGA target and generate the corresponding firmware.
+
+This provides a common development environment where students can learn, develop, compile, and generate firmware for different VEGA boards without changing to a separate development platform.
+
+## 3. VEGA ARIES V2 Student Learning Kit
 
 The trainer kits provide a practical platform for experimenting with the VEGA ARIES V2 microcontroller.
 
@@ -72,11 +90,11 @@ They support experiments involving:
 
 The kits connect the concepts learned through the web platform with real hardware experiments.
 
-## 3. Custom VEGA ARIES V2 Hardware
+## 4. Custom VEGA ARIES V2 Hardware
 
-As part of the project, a custom schematic symbol and PCB footprint for the VEGA ARIES V2 were created and integrated into the hardware design.
+As part of the project, a custom schematic symbol and PCB footprint for the **VEGA ARIES V2** were created and integrated into the hardware design.
 
-This enables the microcontroller to be incorporated into custom carrier boards and future development hardware.
+A custom carrier PCB was developed to provide the required interfaces and connections for the VEGA ARIES V2 and project peripherals.
 
 ---
 
@@ -105,7 +123,9 @@ The trainer kits provide a hands-on platform for experimenting with GPIO, periph
 
 # Custom Carrier PCB
 
-A custom carrier PCB was designed to integrate the VEGA ARIES V2 into the project hardware and support the required interfaces and connections.
+A custom carrier PCB was designed to integrate the **VEGA ARIES V2** into the project hardware and support the required interfaces and connections.
+
+As part of the hardware development, a custom schematic symbol and PCB footprint for the VEGA ARIES V2 were also created.
 
 - [View Custom VEGA ARIES V2 Carrier PCB](https://github.com/RISHIKESH317/VEGA-EDULINK/blob/main/DOCS/CARRIER_PCB.jpeg)
 
@@ -117,13 +137,15 @@ VEGA-EDULINK supports both wired and wireless firmware programming.
 
 ## Cable Programming
 
-The firmware generated by the Web IDE can be programmed directly into the VEGA ARIES V2 using a wired programming interface.
+The firmware generated by the Web IDE can be programmed into the selected VEGA board using a wired programming interface.
 
-**Web IDE → `firmware.bin` → Cable → VEGA ARIES V2 → Program → Execute**
+**Web IDE → `firmware.bin` → Cable → VEGA Board → Program → Execute**
+
+The exact programming interface and boot configuration depend on the selected VEGA board.
 
 ## OTA Programming
 
-For wireless programming, an **ESP32-S3** is used as a wireless programming gateway.
+For wireless programming, an **ESP32-S3** is used as a wireless programming gateway in the current OTA implementation.
 
 **Web IDE → Wi-Fi → ESP32-S3 → USB/UART → VEGA ARIES V2**
 
@@ -139,14 +161,14 @@ The OTA programming connection between the Web IDE, ESP32-S3, and VEGA ARIES V2 
 
 # Serial Monitor
 
-The VEGA-EDULINK Web IDE includes an integrated **Serial Monitor** for observing serial communication from the VEGA ARIES V2.
+The VEGA-EDULINK Web IDE includes an integrated **Serial Monitor** for observing serial communication from supported VEGA boards.
 
 It allows users to:
 
 - View real-time serial output
 - Monitor program execution
 - Debug embedded applications
-- Observe messages generated by the VEGA ARIES V2
+- Observe messages generated by the VEGA board
 
 This provides a single development environment for writing code, programming the board, and monitoring its execution.
 
@@ -154,7 +176,7 @@ This provides a single development environment for writing code, programming the
 
 # ESP32-S3 Wireless Programming Gateway
 
-The ESP32-S3 provides the wireless connection between the Web IDE and the VEGA ARIES V2.
+The ESP32-S3 provides the wireless connection between the Web IDE and the VEGA ARIES V2 during the current OTA programming implementation.
 
 The gateway performs the following functions:
 
@@ -184,18 +206,24 @@ The configured credentials are stored in LittleFS and used for subsequent connec
 The complete system consists of the following major components:
 
 1. VEGA-EDULINK Web Platform
-2. Backend Build Environment
-3. Integrated Serial Monitor
-4. ESP32-S3 Wireless Programming Gateway
-5. VEGA ARIES V2
-6. VEGA ARIES V2 Trainer Kits
-7. Connected peripherals and communication interfaces
+2. Integrated VEGA RISC-V Toolchain
+3. Backend Build Environment
+4. Integrated Serial Monitor
+5. ESP32-S3 Wireless Programming Gateway
+6. VEGA ARIES V2 / V3 and other supported VEGA boards
+7. VEGA ARIES V2 Trainer Kits
+8. Custom VEGA ARIES V2 Carrier PCB
+9. Connected peripherals and communication interfaces
 
-### Overall Flow
+### Overall Development Flow
 
-**Source Code → Web IDE → Backend Build → `firmware.bin` → Cable / Wi-Fi → ESP32-S3 → USB/UART → VEGA ARIES V2 → Flash → Execute → Serial Monitor**
+**Source Code → Web IDE → Integrated VEGA Toolchain → Backend Build → `firmware.bin` → Cable / Wi-Fi → VEGA Board → Flash → Execute → Serial Monitor**
 
-The ESP32-S3 acts as the bridge between the web-based development environment and the VEGA ARIES V2 hardware during OTA programming.
+### Current OTA Implementation
+
+**Web IDE → Wi-Fi → ESP32-S3 → USB/UART → VEGA ARIES V2 → Flash → Execute → Serial Monitor**
+
+The ESP32-S3 acts as the bridge between the web-based development environment and the VEGA ARIES V2 hardware during the current OTA implementation.
 
 ---
 
@@ -203,16 +231,20 @@ The ESP32-S3 acts as the bridge between the web-based development environment an
 
 ## Algorithm 1: Source Code to Firmware Generation
 
-1. Open the VEGA-EDULINK Web IDE and enter the C/C++ source code.
-2. Click the **BUILD** button to start the firmware generation process.
-3. Send the source code from the Web IDE to the backend build environment.
-4. Initialize the VEGA RISC-V compiler and required build tools.
-5. Compile the source code into the required object files.
-6. Link the object files to generate the firmware ELF file.
-7. Convert the ELF file into the required `firmware.bin` binary image.
-8. Verify the generated firmware binary and report the build result.
-9. Display **BUILD SUCCESS** when firmware generation is completed.
-10. Provide the generated `firmware.bin` for hardware programming.
+1. Open the VEGA-EDULINK Web IDE.
+2. Select the required VEGA target board.
+3. Enter the C/C++ source code.
+4. Click the **BUILD** button to start the firmware generation process.
+5. Send the source code from the Web IDE to the backend build environment.
+6. Initialize the integrated VEGA RISC-V compiler and required build tools.
+7. Compile the source code into the required object files.
+8. Link the object files to generate the firmware ELF file.
+9. Convert the ELF file into the required `firmware.bin` binary image.
+10. Verify the generated firmware binary and report the build result.
+11. Display **BUILD SUCCESS** when firmware generation is completed.
+12. Provide the generated `firmware.bin` for hardware programming.
+
+The selected VEGA board determines the required board configuration and compilation parameters.
 
 ## Algorithm 2: Wireless Firmware Delivery and Programming
 
@@ -225,9 +257,12 @@ The ESP32-S3 acts as the bridge between the web-based development environment an
 7. Initialize the communication interface between the ESP32-S3 and VEGA ARIES V2.
 8. Detect the VEGA ARIES V2 and enter the required bootloader programming mode.
 9. Transfer the firmware using XMODEM-CRC with packet validation and retry handling.
-10. Verify the programming result, reset the VEGA ARIES V2, and complete the operation.
+10. Verify the programming result.
+11. Reset the VEGA ARIES V2 and complete the operation.
 
 ## Algorithm 3: VEGA ARIES V2 Firmware Programming
+
+The following describes the current VEGA ARIES V2 hardware programming implementation.
 
 1. Check the BOOT_SEL/J12 configuration of the VEGA ARIES V2.
 2. Select UART Boot Mode when UART-based programming is required.
@@ -240,11 +275,13 @@ The ESP32-S3 acts as the bridge between the web-based development environment an
 9. Verify the programmed firmware and confirm successful programming.
 10. Reset the VEGA ARIES V2 and execute the programmed application.
 
+The programming sequence for V3 series and other VEGA boards depends on their respective bootloader, flash configuration, and programming interface.
+
 ---
 
 # Firmware Transfer
 
-The OTA programming process uses the ESP32-S3 to receive and transfer the generated firmware.
+The OTA programming process uses the ESP32-S3 to receive and transfer the generated firmware for the current VEGA ARIES V2 OTA implementation.
 
 The basic sequence is:
 
@@ -259,6 +296,7 @@ XMODEM-CRC is used for reliable firmware transfer by providing packet-based tran
 ## Hardware
 
 - VEGA ARIES V2
+- VEGA V3 series and other supported VEGA boards
 - ESP32-S3
 - VEGA ARIES V2 Trainer Kits
 - Custom VEGA ARIES V2 carrier PCB
@@ -267,16 +305,16 @@ XMODEM-CRC is used for reliable firmware transfer by providing packet-based tran
 
 ## Software
 
-- Web-based IDE
+- VEGA-EDULINK Web IDE
+- Integrated VEGA RISC-V toolchain
 - Integrated Serial Monitor
 - C/C++ development environment
-- VEGA RISC-V compiler/toolchain
 - Backend build environment
 - ESP32-S3 firmware
 - Wi-Fi Manager
 - LittleFS
 - XMODEM-CRC firmware transfer
-- VEGA ARIES V2 programming interface
+- VEGA board programming interface
 
 ---
 
